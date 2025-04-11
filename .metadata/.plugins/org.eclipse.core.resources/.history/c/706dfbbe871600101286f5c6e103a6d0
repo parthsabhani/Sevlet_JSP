@@ -1,0 +1,22 @@
+package com.servlets;
+
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
+
+@WebListener
+public class ListnerDemo implements ServletContextListener 
+{
+    public ListnerDemo() 
+    {    }
+    public void contextInitialized(ServletContextEvent sce)  
+    { 
+
+    }
+
+	public void contextDestroyed(ServletContextEvent sce)  
+	{ 
+
+    }
+	
+}

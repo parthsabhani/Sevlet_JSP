@@ -1,0 +1,63 @@
+package com.servlets;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+@WebServlet("/CalculatorServlet")
+public class CalculatorServlet extends HttpServlet 
+{
+	private static final long serialVersionUID = 1L;
+    public CalculatorServlet() 
+    {
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		int n1 = Integer.parseInt(request.getParameter("n1"));
+		int n2 = Integer.parseInt(request.getParameter("n2"));
+		
+		out.println("Addition : " + addition(n1+n2));
+	}
+	
+	private static int addition(int n1, int n2)
+	{
+		return (n1 + n2);
+	}
+	
+	private static int subtraction(int n1, int n2)
+	{
+		if(n1 > n2)
+		{			
+			return (n1 - n2);
+		}else
+		{
+			return (n2 - n1);
+		}
+	}
+	
+	private static int multiplication(int n1, int n2)
+	{
+		return (n1 * n2);
+	}
+	
+	private static int division(int n1, int n2)
+	{
+		return (n1 + n2);
+	}
+
+}
