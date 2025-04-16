@@ -7,7 +7,6 @@
 <title>Registration</title>
 </head>
 <body>
-<center>
 ${msg}
 <form method="post" action="RegistrationServlet">
 	<table>
@@ -32,6 +31,5 @@ ${msg}
 		</tr>
 	</table>
 </form>
-</center>
 </body>
 </html>

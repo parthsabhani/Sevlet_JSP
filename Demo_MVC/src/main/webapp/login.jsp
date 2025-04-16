@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<center>
 ${msg}
+<h2>Login Page</h2>
 <form method="post" action="LoginServlet">
 	<table>
 		<tr>
@@ -24,6 +24,8 @@ ${msg}
 		</tr>
 	</table>
 </form>
-</center>
+
+<hr>
+
 </body>
 </html>

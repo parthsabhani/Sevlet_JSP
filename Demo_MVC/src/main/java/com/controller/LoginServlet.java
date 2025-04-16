@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import com.dao.LoginDAO;
@@ -26,16 +28,18 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{	
-		int x = new LoginDAO().studentLogin(request.getParameter("username"), request.getParameter("password"));
+		Student std = new LoginDAO().studentLogin(request.getParameter("username"), request.getParameter("password"));
 		
-		if(x > 0) 
+		if(std != null) 
 		{
-			request.setAttribute("msg", "Login Successfully");
-			request.getRequestDispatcher("message.jsp").forward(request, response);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("model", std);
+			session.setMaxInactiveInterval(60*2);
+			response.sendRedirect("HomeServlet.do?action=showstudent&sid="+std.getSid());
 		}else
 		{
-			request.setAttribute("msg", "Login Failed");
-			request.getRequestDispatcher("message.jsp").forward(request, response);	
+			request.setAttribute("msg", "Invalid Username or Password");
+			request.getRequestDispatcher("login.jsp").forward(request, response);	
 		}
 	}
 

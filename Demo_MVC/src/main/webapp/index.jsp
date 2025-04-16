@@ -8,6 +8,6 @@
 </head>
 <body>
 New User ? <a  href="registration.jsp">Sign Up</a><br>
-All ready a User ? <a  href="login.jsp">Sign Up</a>
+All ready a User ? <a  href="login.jsp">Login</a>
 </body>
 </html>

@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.model.Student;
 import com.util.ConnectionClass;
 
 public class LoginDAO 
 {
 Connection c = null;
 	
-	public int studentLogin(String username, String password)
+	public Student studentLogin(String username, String password)
 	{
-		int x=0;		
-		
+		Student s = null;
 		String q = "select sid, firstname, lastname from student where username = ? and password= ?";
 		try
 		{			
@@ -24,12 +24,14 @@ Connection c = null;
 			ResultSet rs = ps.executeQuery();
 			if(rs.next())
 			{
-				 int sid = rs.getInt("sid");
-                 String fname = rs.getString("firstname");
-                 String lname = rs.getString("lastname");
-
-                 System.out.println("Login successful for: " + fname + " " + lname);
-                 x =1;
+				 s = new Student();
+				 
+				 s.setSid(rs.getInt("sid"));
+                 s.setFirstname(rs.getString("firstname"));
+                 s.setLastname(rs.getString("lastname"));
+                 s.setUsername(rs.getString("username"));
+                 s.setPassword(rs.getString("password"));
+                 
 			}else {
                 System.out.println("Invalid credentials.");
             }
@@ -38,6 +40,6 @@ Connection c = null;
 			e.printStackTrace();
 		}
 		
-		return x;
+		return s;
 	}
 }
